@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "scripts": {
     "docs": "elm-doc-preview",
-    "test": "elm make && elm-doc-preview --output /dev/null && npm -w example run test"
+    "test": "elm make && elm-doc-preview --output /dev/null && npm -w benchmarks -w example run test"
   },
   "workspaces": [
+    "benchmarks",
     "example"
   ],
   "devDependencies": {
