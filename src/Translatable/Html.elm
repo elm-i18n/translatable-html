@@ -1,5 +1,5 @@
 module Translatable.Html exposing
-    ( toHtml
+    ( toHtml, core
     , Html, Attribute, text, node, map
     , h1, h2, h3, h4, h5, h6
     , div, p, hr, pre, blockquote
@@ -25,7 +25,7 @@ expect to use frequently will be closer to the top.
 
 # Conversion
 
-@docs toHtml
+@docs toHtml, core
 
 
 # Primitives
@@ -176,6 +176,48 @@ toHtml f html =
         Text userText ->
             Html.text (f userText)
 
+        Core html_ ->
+            html_
+
+
+{-| This escape hatch lets you mix core `Html.Html` with `Translatable.Html.Html` when it cannot be avoided.
+For example, if you use a 3rd party package that gives you core `Html.Html` or `Html.Attributes.Attribute` this allows you to continue using the 3rd party package.
+
+    import Html
+    import Markdown
+    import Translatable.Html
+
+    view : Html.Html msg
+    view =
+        Translatable.Html.toHtml translate typedView
+
+    typedView : Translatable.Html.Html Translatable msg
+    typedView =
+        Html.div
+            [ "Hello"
+                |> text
+                |> Translatable.Html.text
+            , "_world_."
+                |> Markdown.toHtml []
+                |> Translatable.Html.core
+            ]
+
+    type Translatable
+        = Translatable String
+
+    text : String -> Translatable
+    text =
+        Translatable
+
+    translate : Translatable -> String
+    translate (Translatable userText) =
+        userText
+
+-}
+core : Html.Html msg -> Html userText msg
+core =
+    Core
+
 
 
 -- CORE TYPES
@@ -278,6 +320,9 @@ map f html =
 
         Text userText ->
             Text userText
+
+        Core html_ ->
+            Core (Html.map f html_)
 
 
 

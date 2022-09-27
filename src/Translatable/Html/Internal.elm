@@ -9,6 +9,7 @@ type Html userText msg
     | KeyedNode String (List (Attribute userText msg)) (List ( String, Html userText msg ))
     | LazyNode ((userText -> String) -> Html.Html msg)
     | Text userText
+    | Core (Html.Html msg)
 
 
 type Attribute userText msg
