@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "@elm-i18n/translatable-html",
+  "version": "0.0.0",
+  "scripts": {
+    "docs": "elm-doc-preview",
+    "test": "elm make && elm-doc-preview --output /dev/null && npm -w example run test"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "devDependencies": {
+    "elm": "0.19.1-5",
+    "elm-doc-preview": "^5.0.5",
+    "elm-format": "^0.8.5"
+  }
+}

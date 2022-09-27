@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.opts.json",
+  "include": ["**/*.ts"],
+  "exclude": [
+    "**/dist/*",
+    "**/node_modules/*",
+  ]
+}

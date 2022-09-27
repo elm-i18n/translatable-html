@@ -1,0 +1,21 @@
+{
+    "type": "package",
+    "name": "elm-i18n/translatable-html",
+    "summary": "A version of elm/html geared towards translation.",
+    "license": "BSD-3-Clause",
+    "version": "1.0.0",
+    "exposed-modules": [
+        "Translatable.Html",
+        "Translatable.Html.Attributes",
+        "Translatable.Html.Events",
+        "Translatable.Html.Keyed",
+        "Translatable.Html.Lazy"
+    ],
+    "elm-version": "0.19.0 <= v < 0.20.0",
+    "dependencies": {
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/html": "1.0.0 <= v < 2.0.0",
+        "elm/json": "1.0.0 <= v < 2.0.0"
+    },
+    "test-dependencies": {}
+}
