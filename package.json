@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "scripts": {
     "docs": "elm-doc-preview",
-    "test": "elm make && elm-doc-preview --output /dev/null && npm -w benchmarks -w example run test"
+    "lint": "elm-format src --validate",
+    "validate": "npm run lint && npm run validate:build && npm run validate:docs",
+    "validate:build": "elm make",
+    "validate:docs": "elm-doc-preview --output /dev/null"
   },
   "workspaces": [
     "benchmarks",

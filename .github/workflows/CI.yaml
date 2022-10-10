@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/actions/install
+
+      - name: Validate
+        run: npm run validate && npm run validate --workspaces
+
+  publish:
+    needs: [validate]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/actions/install
+
+      - name: Elm Publish
+        uses: dillonkearns/elm-publish-action@2e6b7857073da5b88cc46fc789967bd7046f15df # 1.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-elm: ./node_modules/.bin/elm

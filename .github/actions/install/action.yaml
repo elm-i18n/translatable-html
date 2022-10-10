@@ -1,0 +1,21 @@
+name: Install
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js (latest LTS version)
+      uses: actions/setup-node@v3
+      with:
+        node-version: lts/*
+        cache: 'npm'
+
+    - name: Cache ~/.elm
+      uses: actions/cache@v3
+      with:
+        path: ~/.elm
+        key: elm-${{ hashFiles('elm.json', 'elm-tooling.json', 'review/elm.json') }}
+
+    - name: npm ci
+      run: npm ci
+      shell: bash
