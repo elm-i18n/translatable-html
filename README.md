@@ -1,6 +1,6 @@
 # translatable-html
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/elm-i18n/translatable-html/CI?style=flat-square)](https://github.com/elm-i18n/translatable-html/actions/workflows/CI.yaml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/elm-i18n/translatable-html/CI.yaml?branch=main&style=flat-square)](https://github.com/elm-i18n/translatable-html/actions/workflows/CI.yaml)
 [![Elm package](https://img.shields.io/elm-package/v/elm-i18n/translatable-html?style=flat-square)](https://package.elm-lang.org/packages/elm-i18n/translatable-html/latest)
 
 tl;dr: A version of [`elm/html`][elm/html] geared towards translation.
